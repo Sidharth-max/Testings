@@ -1,0 +1,94 @@
+{
+  "$schema": "https://www.raycast.com/schemas/extension.json",
+  "name": "spotify-integration",
+  "title": "Spotify Integration",
+  "description": "Control Spotify playback and search music directly from Raycast",
+  "icon": "spotify-icon.png",
+  "author": "sidharth-max",
+  "categories": [
+    "Media",
+    "Productivity"
+  ],
+  "license": "MIT",
+  "commands": [
+    {
+      "name": "setup-guide",
+      "title": "Setup Guide",
+      "description": "Instructions for setting up Spotify integration",
+      "mode": "view"
+    },
+    {
+      "name": "play-pause",
+      "title": "Play/Pause",
+      "description": "Play or pause the current track",
+      "mode": "no-view"
+    },
+    {
+      "name": "next-track",
+      "title": "Next Track",
+      "description": "Skip to the next track",
+      "mode": "no-view"
+    },
+    {
+      "name": "previous-track",
+      "title": "Previous Track",
+      "description": "Go back to the previous track",
+      "mode": "no-view"
+    },
+    {
+      "name": "current-track",
+      "title": "Current Track",
+      "description": "Show information about the currently playing track",
+      "mode": "view"
+    },
+    {
+      "name": "search",
+      "title": "Search Music",
+      "description": "Search for songs, artists, or albums on Spotify",
+      "mode": "view"
+    },
+    {
+      "name": "volume-control",
+      "title": "Volume Control",
+      "description": "Adjust Spotify volume",
+      "mode": "view"
+    }
+  ],
+  "preferences": [
+    {
+      "name": "clientId",
+      "title": "Spotify Client ID",
+      "description": "Your Spotify app client ID",
+      "type": "textfield",
+      "required": true
+    },
+    {
+      "name": "clientSecret",
+      "title": "Spotify Client Secret",
+      "description": "Your Spotify app client secret",
+      "type": "password",
+      "required": true
+    }
+  ],
+  "dependencies": {
+    "@raycast/api": "^1.68.0",
+    "@raycast/utils": "^1.12.0",
+    "axios": "^1.6.0"
+  },
+  "devDependencies": {
+    "@raycast/eslint-config": "^1.0.8",
+    "@types/node": "^20.11.0",
+    "@types/react": "^18.2.55",
+    "eslint": "^8.56.0",
+    "prettier": "^3.2.5",
+    "typescript": "^5.3.3"
+  },
+  "scripts": {
+    "build": "ray build -e dist",
+    "dev": "ray develop",
+    "fix-lint": "ray lint --fix",
+    "lint": "ray lint",
+    "prepublishOnly": "echo \"\\n\\nIt seems like you are trying to publish the Raycast extension to npm.\\n\\nIf you did intend to publish it to npm, remove the \\`prepublishOnly\\` script and rerun \\`npm publish\\` again.\\nIf you wanted to publish it to the Raycast Store instead, use \\`npm run publish\\` instead.\\n\\n\" && exit 1",
+    "publish": "npx @raycast/api@latest publish"
+  }
+}
