@@ -1,0 +1,8 @@
+module.exports = {
+  root: true,
+  extends: ["@raycast"],
+  rules: {
+    "@typescript-eslint/no-unused-vars": "warn",
+    "prefer-const": "warn",
+  },
+};
