@@ -63,6 +63,14 @@
                 document.getElementById('nameError').textContent = 'Please enter your name.';
                 valid = false;
             }
+            else if (name.length < 2) {
+                document.getElementById('nameError').textContent = 'Name must be at least 2 characters.';
+                valid = false;
+            }
+            var nameRe = /^[a-zA-Z\s'-]+$/;
+            if (!nameRe.test(name)) {
+                document.getElementById('nameError').textContent = 'Name contains invalid characters.'
+            }
 
             const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (!email) {
