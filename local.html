@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="demo">
+    <button onclick="setdata()">Add</button>
+    <button onclick="getdata()">display</button>
+    <button onclick="removedata()">remove</button>
+    <button onclick="cleardata()">clear</button>
+    <script>
+        const setdata = () => {
+            localStorage.setItem("name", "John Doe");
+            localStorage.setItem("age", "30");
+            alert("Data added to local storage");
+        };
+        const getdata = () => {
+            const name = localStorage.getItem("name");
+            const age = localStorage.getItem("age");
+            alert(`Name: ${name}, Age: ${age}`);
+        };
+        const removedata = () => {
+            localStorage.removeItem("name");
+            alert("Name removed from local storage");
+        };
+        const cleardata = () => {
+            localStorage.clear();
+            alert("All data cleared from local storage");
+        };
+    </script>
+</div>
+</body>
+</html>
