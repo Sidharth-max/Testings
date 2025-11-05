@@ -1,6 +1,7 @@
 import React from 'react';
 import Button from '@mui/material/Button';
 import styled from 'styled-components';
+import mystyle from './mystyle.module.css';
 
 const H2 = styled.h2`
   color: blue;
@@ -11,7 +12,7 @@ const H2 = styled.h2`
 `;
 
 function GG() {
-  const userName = "GG";
+  const userName = "Gaburu";
 
   return (
     <div>
@@ -19,7 +20,10 @@ function GG() {
       <Button variant="contained" color="primary">
         Click Me
       </Button>
-      
+      <div className={mystyle.box}>
+
+      </div>
+
     </div>
   );
 }
