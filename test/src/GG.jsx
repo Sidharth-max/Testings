@@ -23,7 +23,6 @@ function GG() {
       <div className={mystyle.box}>
 
       </div>
-
     </div>
   );
 }
