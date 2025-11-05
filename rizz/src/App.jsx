@@ -9,9 +9,11 @@ function App() {
   return (
     <>
       <h1>Rizz</h1>
-      
+      <p>Count: {count}</p>
+      <button onClick={() => setCount(count + 1)}>Increment</button>
     </>
   )
 }
 
 export default App
+
