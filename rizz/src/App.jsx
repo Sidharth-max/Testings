@@ -1,7 +1,7 @@
 
 import { useState } from 'react'
-import 'bootstrap/dist/css/bootstrap.min.css'
-import Usercomponent from './Usercomponent'
+// import Usercomponent from './Usercomponent'
+import EmployeeComponent from './EmployeeComponent'
 
 
 function App() {
@@ -9,12 +9,8 @@ function App() {
 
   return (
     <div >
-     
-        
-        {/* User Registration Form */}
-        <Usercomponent />
-        
-    
+        {/* Employee CRUD Component */}
+        <EmployeeComponent />
     </div>
   )
 }

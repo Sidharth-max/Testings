@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import { Container, Row, Col, Form, Button, Table } from 'react-bootstrap';
 
-const Usercomponent = () => {
+const EmployeeComponent = () => {
     const [formData, setFormData] = useState({
         name: '',
         age: '',
         salary: ''
     });
 
-    const [users, setUsers] = useState([]);
+    const [employees, setEmployees] = useState([]);
     const [editIndex, setEditIndex] = useState(null);
 
     const handleChange = (e) => {
@@ -23,15 +23,15 @@ const Usercomponent = () => {
         e.preventDefault();
         
         if (editIndex !== null) {
-            // Update existing user
-            const updatedUsers = users.map((user, index) => 
-                index === editIndex ? { ...formData } : user
+            // Update existing employee
+            const updatedEmployees = employees.map((emp, index) => 
+                index === editIndex ? { ...formData } : emp
             );
-            setUsers(updatedUsers);
+            setEmployees(updatedEmployees);
             setEditIndex(null);
         } else {
-            // Add new user
-            setUsers([...users, { ...formData }]);
+            // Add new employee
+            setEmployees([...employees, { ...formData }]);
         }
         
         // Reset form
@@ -43,31 +43,25 @@ const Usercomponent = () => {
     };
 
     const handleEdit = (index) => {
-        setFormData(users[index]);
+        setFormData(employees[index]);
         setEditIndex(index);
     };
 
     const handleDelete = (index) => {
-        const updatedUsers = users.filter((_, i) => i !== index);
-        setUsers(updatedUsers);
+        const updatedEmployees = employees.filter((_, i) => i !== index);
+        setEmployees(updatedEmployees);
         if (editIndex === index) {
             setFormData({ name: '', age: '', salary: '' });
             setEditIndex(null);
         }
     };
 
-    const handleCancel = () => {
-        setFormData({ name: '', age: '', salary: '' });
-        setEditIndex(null);
-    };
-
     return (
-        <Container className="py-5">
-            <h1 className="text-center mb-4">Vite Project</h1>
+        <Container className="py-4">
+            <h1 className="mb-4">Vite Project</h1>
             <Row>
-                <Col md={5}>
-                    <h2 className="mb-4">User Form</h2>
-                    <Form onSubmit={handleSubmit}>
+                <Col md={6} lg={4}>
+                    <Form onSubmit={handleSubmit} className="mb-4">
                         <Form.Group className="mb-3" controlId="name">
                             <Form.Label>Name:</Form.Label>
                             <Form.Control
@@ -81,10 +75,10 @@ const Usercomponent = () => {
                         </Form.Group>
 
                         <Form.Group className="mb-3" controlId="age">
-                            <Form.Label>Age</Form.Label>
+                            <Form.Label>Age:</Form.Label>
                             <Form.Control
-                                type="text"
-                                placeholder="AGe"
+                                type="number"
+                                placeholder="Enter age"
                                 name="age"
                                 value={formData.age}
                                 onChange={handleChange}
@@ -93,10 +87,10 @@ const Usercomponent = () => {
                         </Form.Group>
 
                         <Form.Group className="mb-3" controlId="salary">
-                            <Form.Label>Salary</Form.Label>
+                            <Form.Label>Salary:</Form.Label>
                             <Form.Control
-                                type="text"
-                                placeholder="Salary"
+                                type="number"
+                                placeholder="Enter salary"
                                 name="salary"
                                 value={formData.salary}
                                 onChange={handleChange}
@@ -104,25 +98,19 @@ const Usercomponent = () => {
                             />
                         </Form.Group>
 
-                        <div className="d-flex gap-2">
-                            <Button variant="primary" type="submit">
-                                {editIndex !== null ? 'Update' : 'Save'}
-                            </Button>
-                            {editIndex !== null && (
-                                <Button variant="danger" type="button" onClick={handleCancel}>
-                                    Cancel
-                                </Button>
-                            )}
-                        </div>
+                        <Button variant="primary" type="submit">
+                            {editIndex !== null ? 'Update Data' : 'Save Data'}
+                        </Button>
                     </Form>
                 </Col>
+            </Row>
 
-                <Col md={7}>
-                    <h2 className="mb-4">User List</h2>
+            <Row>
+                <Col md={12}>
                     <Table striped bordered hover responsive>
                         <thead>
                             <tr>
-                                <th>#</th>
+                                <th>Id</th>
                                 <th>Name</th>
                                 <th>Age</th>
                                 <th>Salary</th>
@@ -130,17 +118,17 @@ const Usercomponent = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            {users.length === 0 ? (
+                            {employees.length === 0 ? (
                                 <tr>
-                                    <td colSpan="5" className="text-center">No users added yet</td>
+                                    <td colSpan="5" className="text-center">No data available</td>
                                 </tr>
                             ) : (
-                                users.map((user, index) => (
+                                employees.map((emp, index) => (
                                     <tr key={index}>
                                         <td>{index + 1}</td>
-                                        <td>{user.name}</td>
-                                        <td>{user.age}</td>
-                                        <td>{user.salary}</td>
+                                        <td>{emp.name}</td>
+                                        <td>{emp.age}</td>
+                                        <td>{emp.salary}</td>
                                         <td>
                                             <Button 
                                                 variant="warning" 
@@ -169,4 +157,4 @@ const Usercomponent = () => {
     );
 };
 
-export default Usercomponent;
+export default EmployeeComponent;
