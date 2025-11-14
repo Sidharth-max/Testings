@@ -67,6 +67,7 @@ class ClassComponentExample extends React.Component {
             Decrement
           </button>
           <button onClick={this.reset} style={{ margin: '5px' }}>
+            
             Reset
           </button>
         </div>
