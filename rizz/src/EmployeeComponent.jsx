@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Container, Row, Col, Form, Button, Table } from 'react-bootstrap';
+import { Container, Row, Col, Form, Button, Table, Card, Badge } from 'react-bootstrap';
 
 const EmployeeComponent = () => {
     const [formData, setFormData] = useState({
@@ -56,101 +56,175 @@ const EmployeeComponent = () => {
         }
     };
 
+    const handleCancel = () => {
+        setFormData({ name: '', age: '', salary: '' });
+        setEditIndex(null);
+    };
+
     return (
-        <Container className="py-4">
-            <h1 className="mb-4">Vite Project</h1>
-            <Row>
-                <Col md={6} lg={4}>
-                    <Form onSubmit={handleSubmit} className="mb-4">
-                        <Form.Group className="mb-3" controlId="name">
-                            <Form.Label>Name:</Form.Label>
-                            <Form.Control
-                                type="text"
-                                placeholder="Enter name"
-                                name="name"
-                                value={formData.name}
-                                onChange={handleChange}
-                                required
-                            />
-                        </Form.Group>
+        <Container className="py-5" style={{ maxWidth: '1200px' }}>
+            <div className="text-center mb-5">
+                <h1 className="display-4 fw-bold text-primary mb-2">Employee Management System</h1>
+                <p className="text-muted">Manage your employee records efficiently</p>
+            </div>
+            
+            <Row className="g-4">
+                <Col lg={4} md={6}>
+                    <Card className="shadow-sm border-0" style={{ borderRadius: '15px' }}>
+                        <Card.Body className="p-4">
+                            <div className="d-flex align-items-center mb-4">
+                                <div className="bg-primary bg-gradient rounded-circle p-2 me-3" style={{ width: '40px', height: '40px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="white" viewBox="0 0 16 16">
+                                        <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
+                                    </svg>
+                                </div>
+                                <h4 className="mb-0 fw-bold">{editIndex !== null ? 'Edit Employee' : 'Add Employee'}</h4>
+                            </div>
+                            
+                            <Form onSubmit={handleSubmit}>
+                                <Form.Group className="mb-3">
+                                    <Form.Label className="fw-semibold text-secondary small">Name</Form.Label>
+                                    <Form.Control
+                                        type="text"
+                                        placeholder="Enter full name"
+                                        name="name"
+                                        value={formData.name}
+                                        onChange={handleChange}
+                                        required
+                                        className="border-0 bg-light"
+                                        style={{ borderRadius: '10px', padding: '12px 15px' }}
+                                    />
+                                </Form.Group>
 
-                        <Form.Group className="mb-3" controlId="age">
-                            <Form.Label>Age:</Form.Label>
-                            <Form.Control
-                                type="number"
-                                placeholder="Enter age"
-                                name="age"
-                                value={formData.age}
-                                onChange={handleChange}
-                                required
-                            />
-                        </Form.Group>
+                                <Form.Group className="mb-3">
+                                    <Form.Label className="fw-semibold text-secondary small">Age</Form.Label>
+                                    <Form.Control
+                                        type="number"
+                                        placeholder="Enter age"
+                                        name="age"
+                                        value={formData.age}
+                                        onChange={handleChange}
+                                        required
+                                        className="border-0 bg-light"
+                                        style={{ borderRadius: '10px', padding: '12px 15px' }}
+                                    />
+                                </Form.Group>
 
-                        <Form.Group className="mb-3" controlId="salary">
-                            <Form.Label>Salary:</Form.Label>
-                            <Form.Control
-                                type="number"
-                                placeholder="Enter salary"
-                                name="salary"
-                                value={formData.salary}
-                                onChange={handleChange}
-                                required
-                            />
-                        </Form.Group>
+                                <Form.Group className="mb-4">
+                                    <Form.Label className="fw-semibold text-secondary small">Salary</Form.Label>
+                                    <Form.Control
+                                        type="number"
+                                        placeholder="Enter salary"
+                                        name="salary"
+                                        value={formData.salary}
+                                        onChange={handleChange}
+                                        required
+                                        className="border-0 bg-light"
+                                        style={{ borderRadius: '10px', padding: '12px 15px' }}
+                                    />
+                                </Form.Group>
 
-                        <Button variant="primary" type="submit">
-                            {editIndex !== null ? 'Update Data' : 'Save Data'}
-                        </Button>
-                    </Form>
+                                <div className="d-grid gap-2">
+                                    <Button 
+                                        variant={editIndex !== null ? "warning" : "primary"} 
+                                        type="submit"
+                                        className="fw-semibold"
+                                        style={{ borderRadius: '10px', padding: '12px' }}
+                                    >
+                                        {editIndex !== null ? '✓ Update Employee' : '+ Add Employee'}
+                                    </Button>
+                                    {editIndex !== null && (
+                                        <Button 
+                                            variant="outline-secondary" 
+                                            onClick={handleCancel}
+                                            className="fw-semibold"
+                                            style={{ borderRadius: '10px', padding: '12px' }}
+                                        >
+                                            Cancel
+                                        </Button>
+                                    )}
+                                </div>
+                            </Form>
+                        </Card.Body>
+                    </Card>
                 </Col>
-            </Row>
 
-            <Row>
-                <Col md={12}>
-                    <Table striped bordered hover responsive>
-                        <thead>
-                            <tr>
-                                <th>Id</th>
-                                <th>Name</th>
-                                <th>Age</th>
-                                <th>Salary</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {employees.length === 0 ? (
-                                <tr>
-                                    <td colSpan="5" className="text-center">No data available</td>
-                                </tr>
-                            ) : (
-                                employees.map((emp, index) => (
-                                    <tr key={index}>
-                                        <td>{index + 1}</td>
-                                        <td>{emp.name}</td>
-                                        <td>{emp.age}</td>
-                                        <td>{emp.salary}</td>
-                                        <td>
-                                            <Button 
-                                                variant="warning" 
-                                                size="sm" 
-                                                className="me-2"
-                                                onClick={() => handleEdit(index)}
-                                            >
-                                                Edit
-                                            </Button>
-                                            <Button 
-                                                variant="danger" 
-                                                size="sm"
-                                                onClick={() => handleDelete(index)}
-                                            >
-                                                Delete
-                                            </Button>
-                                        </td>
-                                    </tr>
-                                ))
-                            )}
-                        </tbody>
-                    </Table>
+                <Col lg={8} md={6}>
+                    <Card className="shadow-sm border-0" style={{ borderRadius: '15px' }}>
+                        <Card.Body className="p-4">
+                            <div className="d-flex justify-content-between align-items-center mb-4">
+                                <h4 className="mb-0 fw-bold">Employee List</h4>
+                                <Badge bg="primary" pill className="px-3 py-2">
+                                    {employees.length} {employees.length === 1 ? 'Employee' : 'Employees'}
+                                </Badge>
+                            </div>
+                            
+                            <div style={{ overflowX: 'auto' }}>
+                                <Table hover responsive className="mb-0">
+                                    <thead style={{ backgroundColor: '#f8f9fa' }}>
+                                        <tr>
+                                            <th className="fw-semibold text-secondary border-0" style={{ padding: '15px' }}>ID</th>
+                                            <th className="fw-semibold text-secondary border-0" style={{ padding: '15px' }}>Name</th>
+                                            <th className="fw-semibold text-secondary border-0" style={{ padding: '15px' }}>Age</th>
+                                            <th className="fw-semibold text-secondary border-0" style={{ padding: '15px' }}>Salary</th>
+                                            <th className="fw-semibold text-secondary border-0" style={{ padding: '15px' }}>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {employees.length === 0 ? (
+                                            <tr>
+                                                <td colSpan="5" className="text-center py-5">
+                                                    <div className="text-muted">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" viewBox="0 0 16 16" className="mb-3 opacity-50">
+                                                            <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                                                            <path fillRule="evenodd" d="M5.216 14A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216z"/>
+                                                            <path d="M4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"/>
+                                                        </svg>
+                                                        <p className="mb-0 fw-semibold">No employees found</p>
+                                                        <small>Add your first employee to get started</small>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        ) : (
+                                            employees.map((emp, index) => (
+                                                <tr key={index} style={{ borderBottom: '1px solid #f0f0f0' }}>
+                                                    <td style={{ padding: '15px', verticalAlign: 'middle' }}>
+                                                        <Badge bg="secondary" pill>{index + 1}</Badge>
+                                                    </td>
+                                                    <td style={{ padding: '15px', verticalAlign: 'middle' }}>
+                                                        <span className="fw-semibold">{emp.name}</span>
+                                                    </td>
+                                                    <td style={{ padding: '15px', verticalAlign: 'middle' }}>{emp.age}</td>
+                                                    <td style={{ padding: '15px', verticalAlign: 'middle' }}>
+                                                        <span className="text-success fw-semibold">${emp.salary}</span>
+                                                    </td>
+                                                    <td style={{ padding: '15px', verticalAlign: 'middle' }}>
+                                                        <Button 
+                                                            variant="outline-warning" 
+                                                            size="sm" 
+                                                            className="me-2"
+                                                            onClick={() => handleEdit(index)}
+                                                            style={{ borderRadius: '8px', padding: '5px 15px' }}
+                                                        >
+                                                            Edit
+                                                        </Button>
+                                                        <Button 
+                                                            variant="outline-danger" 
+                                                            size="sm"
+                                                            onClick={() => handleDelete(index)}
+                                                            style={{ borderRadius: '8px', padding: '5px 15px' }}
+                                                        >
+                                                            Delete
+                                                        </Button>
+                                                    </td>
+                                                </tr>
+                                            ))
+                                        )}
+                                    </tbody>
+                                </Table>
+                            </div>
+                        </Card.Body>
+                    </Card>
                 </Col>
             </Row>
         </Container>
