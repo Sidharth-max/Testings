@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Container, Row, Col, Form, Button, Table, Card, Badge } from 'react-bootstrap';
 
 const EmployeeComponent = () => {
@@ -8,42 +8,118 @@ const EmployeeComponent = () => {
         salary: ''
     });
 
-    const [employees, setEmployees] = useState([]);
+    const [errors, setErrors] = useState({
+        name: '',
+        age: '',
+        salary: ''
+    });
+
+    const [employees, setEmployees] = useState(() => {
+        const saved = localStorage.getItem('employees');
+        return saved ? JSON.parse(saved) : [];
+    });
     const [editIndex, setEditIndex] = useState(null);
+
+    useEffect(() => {
+        localStorage.setItem('employees', JSON.stringify(employees));
+    }, [employees]);
+
+    // Convert a string to Title Case (e.g. "john doe" → "John Doe")
+    const toTitleCase = (str) => {
+        return str
+            .toLowerCase()
+            .split(' ')
+            .filter(word => word.length > 0)
+            .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+            .join(' ');
+    };
+
+    // Validate individual fields and return error message (empty string = valid)
+    const validateField = (name, value) => {
+        switch (name) {
+            case 'name': {
+                if (!value.trim()) return 'Name is required';
+                if (/[^a-zA-Z\s]/.test(value)) return 'Name must contain only letters and spaces (no special characters or numbers)';
+                if (value.trim().length < 3) return 'Name must be at least 3 characters long';
+                return '';
+            }
+            case 'age': {
+                if (value === '') return 'Age is required';
+                const age = Number(value);
+                if (!Number.isInteger(age)) return 'Age must be a whole number';
+                if (age < 18) return 'Minimum age is 18 years (must be a working adult)';
+                if (age > 65) return 'Maximum age is 65 years (retirement age limit)';
+                return '';
+            }
+            case 'salary': {
+                if (value === '') return 'Salary is required';
+                const salary = Number(value);
+                if (isNaN(salary)) return 'Salary must be a valid number';
+                if (salary < 1000) return 'Minimum salary is ₹1,000';
+                if (salary > 10000000) return 'Maximum salary is ₹1,00,00,000';
+                return '';
+            }
+            default:
+                return '';
+        }
+    };
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setFormData({
-            ...formData,
-            [name]: value
-        });
+
+        // For name field: block special characters / numbers as user types
+        if (name === 'name' && value !== '' && /[^a-zA-Z\s]/.test(value)) {
+            setErrors(prev => ({ ...prev, name: 'Only letters and spaces are allowed' }));
+            return; // don't update value
+        }
+
+        // Force Title Case in real-time for the name field
+        const finalValue = name === 'name' ? toTitleCase(value) : value;
+
+        setFormData(prev => ({ ...prev, [name]: finalValue }));
+
+        // Live-validate on change (clear error as soon as it's fixed)
+        setErrors(prev => ({ ...prev, [name]: validateField(name, finalValue) }));
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
+
+        // Validate all fields before submitting
+        const newErrors = {
+            name: validateField('name', formData.name),
+            age: validateField('age', formData.age),
+            salary: validateField('salary', formData.salary)
+        };
+        setErrors(newErrors);
+
+        // If any error exists, stop submission
+        if (Object.values(newErrors).some(err => err !== '')) return;
+
+        // Auto-convert name to Title Case before saving
+        const cleanedData = {
+            ...formData,
+            name: toTitleCase(formData.name.trim())
+        };
         
         if (editIndex !== null) {
-            // Update existing employee
             const updatedEmployees = employees.map((emp, index) => 
-                index === editIndex ? { ...formData } : emp
+                index === editIndex ? { ...cleanedData } : emp
             );
             setEmployees(updatedEmployees);
             setEditIndex(null);
         } else {
-            // Add new employee
-            setEmployees([...employees, { ...formData }]);
+            setEmployees([...employees, { ...cleanedData }]);
         }
         
-        // Reset form
-        setFormData({
-            name: '',
-            age: '',
-            salary: ''
-        });
+        // Reset form & errors
+        setFormData({ name: '', age: '', salary: '' });
+        setErrors({ name: '', age: '', salary: '' });
     };
 
     const handleEdit = (index) => {
         setFormData(employees[index]);
+        setErrors({ name: '', age: '', salary: '' });
         setEditIndex(index);
     };
 
@@ -52,12 +128,14 @@ const EmployeeComponent = () => {
         setEmployees(updatedEmployees);
         if (editIndex === index) {
             setFormData({ name: '', age: '', salary: '' });
+            setErrors({ name: '', age: '', salary: '' });
             setEditIndex(null);
         }
     };
 
     const handleCancel = () => {
         setFormData({ name: '', age: '', salary: '' });
+        setErrors({ name: '', age: '', salary: '' });
         setEditIndex(null);
     };
 
@@ -81,47 +159,69 @@ const EmployeeComponent = () => {
                                 <h4 className="mb-0 fw-bold">{editIndex !== null ? 'Edit Employee' : 'Add Employee'}</h4>
                             </div>
                             
-                            <Form onSubmit={handleSubmit}>
+                            <Form onSubmit={handleSubmit} noValidate>
                                 <Form.Group className="mb-3">
                                     <Form.Label className="fw-semibold text-secondary small">Name</Form.Label>
                                     <Form.Control
                                         type="text"
-                                        placeholder="Enter full name"
+                                        placeholder="Enter full name (min 3 letters, Title Case)"
                                         name="name"
                                         value={formData.name}
                                         onChange={handleChange}
-                                        required
+                                        isInvalid={!!errors.name}
                                         className="border-0 bg-light"
                                         style={{ borderRadius: '10px', padding: '12px 15px' }}
                                     />
+                                    <Form.Control.Feedback type="invalid">
+                                        {errors.name}
+                                    </Form.Control.Feedback>
+                                    <Form.Text className="text-muted" style={{ fontSize: '0.75rem' }}>
+                                        Letters & spaces only · Min 3 chars · Auto Title Case
+                                    </Form.Text>
                                 </Form.Group>
 
                                 <Form.Group className="mb-3">
                                     <Form.Label className="fw-semibold text-secondary small">Age</Form.Label>
                                     <Form.Control
                                         type="number"
-                                        placeholder="Enter age"
+                                        placeholder="18 – 65"
                                         name="age"
                                         value={formData.age}
                                         onChange={handleChange}
-                                        required
+                                        isInvalid={!!errors.age}
+                                        min={18}
+                                        max={65}
                                         className="border-0 bg-light"
                                         style={{ borderRadius: '10px', padding: '12px 15px' }}
                                     />
+                                    <Form.Control.Feedback type="invalid">
+                                        {errors.age}
+                                    </Form.Control.Feedback>
+                                    <Form.Text className="text-muted" style={{ fontSize: '0.75rem' }}>
+                                        Must be between 18 and 65 years
+                                    </Form.Text>
                                 </Form.Group>
 
                                 <Form.Group className="mb-4">
-                                    <Form.Label className="fw-semibold text-secondary small">Salary</Form.Label>
+                                    <Form.Label className="fw-semibold text-secondary small">Salary (₹)</Form.Label>
                                     <Form.Control
                                         type="number"
-                                        placeholder="Enter salary"
+                                        placeholder="₹1,000 – ₹1,00,00,000"
                                         name="salary"
                                         value={formData.salary}
                                         onChange={handleChange}
-                                        required
+                                        isInvalid={!!errors.salary}
+                                        min={1000}
+                                        max={10000000}
                                         className="border-0 bg-light"
                                         style={{ borderRadius: '10px', padding: '12px 15px' }}
                                     />
+                                    <Form.Control.Feedback type="invalid">
+                                        {errors.salary}
+                                    </Form.Control.Feedback>
+                                    <Form.Text className="text-muted" style={{ fontSize: '0.75rem' }}>
+                                        Min ₹1,000 · Max ₹1,00,00,000
+                                    </Form.Text>
                                 </Form.Group>
 
                                 <div className="d-grid gap-2">
@@ -196,7 +296,7 @@ const EmployeeComponent = () => {
                                                     </td>
                                                     <td style={{ padding: '15px', verticalAlign: 'middle' }}>{emp.age}</td>
                                                     <td style={{ padding: '15px', verticalAlign: 'middle' }}>
-                                                        <span className="text-success fw-semibold">${emp.salary}</span>
+                                                        <span className="text-success fw-semibold">₹{Number(emp.salary).toLocaleString('en-IN')}</span>
                                                     </td>
                                                     <td style={{ padding: '15px', verticalAlign: 'middle' }}>
                                                         <Button 
