@@ -4,15 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e96f9f1b-ed36-4ffd-b96d-178d15a6c04d" name="Changes" comment="commit new!!">
-      <change afterPath="$PROJECT_DIR$/JS-RES/Else.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JS-RES/Relational-OP.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JS-RES/TypeOfOPerators.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JS-RES/elseif.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JS-RES/result.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JS-RES/# Arithmetic-op.js" beforeDir="false" />
-    </list>
+    <list default="true" id="e96f9f1b-ed36-4ffd-b96d-178d15a6c04d" name="Changes" comment="commit new!!" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -44,12 +36,12 @@
     &quot;assignee&quot;: &quot;Sidharth-max&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/Sidharth-max/Testings.git&quot;,
-    &quot;accountId&quot;: &quot;0ab6a852-deda-4ad0-81c5-ea03258f928a&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/Sidharth-max/Testings.git",
+    "accountId": "1c33c1d1-6933-4dfb-a4f8-cf21da78bc92"
   }
-}</component>
+}]]></component>
   <component name="McpProjectServerCommands">
     <commands />
     <urls />
@@ -114,6 +106,7 @@
       <workItem from="1773981328128" duration="1498000" />
       <workItem from="1773982847570" duration="730000" />
       <workItem from="1773983584414" duration="404000" />
+      <workItem from="1773987406574" duration="613000" />
     </task>
     <task id="LOCAL-00001" summary="commit new!!">
       <option name="closed" value="true" />
