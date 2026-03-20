@@ -5,19 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e96f9f1b-ed36-4ffd-b96d-178d15a6c04d" name="Changes" comment="commit new!!">
-      <change afterPath="$PROJECT_DIR$/JS-RES/# Arithmetic-op.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JS-RES/# Arithmetic-op.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JS-RES/Assingment-op.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JS-RES/Second.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JS-RES/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JS-RES/info.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/JS-RES/script.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JS-RES/Else.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JS-RES/Relational-OP.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JS-RES/TypeOfOPerators.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JS-RES/elseif.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JS-RES/result.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JS-RES/# Arithmetic-op.js" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CopilotPersistence">
+    <persistenceIdMap>
+      <entry key="_/home/sjain/WebstormProjects/Testings" value="3B7G3IcT0xMR8n2fyJKx6ZzRIFk" />
+    </persistenceIdMap>
+  </component>
+  <component name="EmbeddingIndexingInfo">
+    <option name="cachedIndexableFilesCount" value="46" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -43,6 +50,10 @@
     &quot;accountId&quot;: &quot;0ab6a852-deda-4ad0-81c5-ea03258f928a&quot;
   }
 }</component>
+  <component name="McpProjectServerCommands">
+    <commands />
+    <urls />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 7,
   &quot;fromUser&quot;: false
@@ -55,24 +66,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "JavaScript Debug.index.html.executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "git-widget-placeholder": "main",
-    "javascript.preferred.runtime.type.id": "node",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;JavaScript Debug.index.html.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;javascript.preferred.runtime.type.id&quot;: &quot;node&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/JS-RES" />
@@ -95,6 +108,12 @@
       <workItem from="1773832497581" duration="442000" />
       <workItem from="1773895576865" duration="2361000" />
       <workItem from="1773903949350" duration="527000" />
+      <workItem from="1773907503733" duration="918000" />
+      <workItem from="1773976551541" duration="82000" />
+      <workItem from="1773976641923" duration="429000" />
+      <workItem from="1773981328128" duration="1498000" />
+      <workItem from="1773982847570" duration="730000" />
+      <workItem from="1773983584414" duration="404000" />
     </task>
     <task id="LOCAL-00001" summary="commit new!!">
       <option name="closed" value="true" />
@@ -113,5 +132,13 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="commit new!!" />
     <option name="LAST_COMMIT_MESSAGE" value="commit new!!" />
+  </component>
+  <component name="github-copilot-workspace">
+    <instructionFileLocations>
+      <option value=".github/instructions" />
+    </instructionFileLocations>
+    <promptFileLocations>
+      <option value=".github/prompts" />
+    </promptFileLocations>
   </component>
 </project>
