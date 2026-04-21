@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    let arr = [55,65,32,56,87]
+    let arr1 = [12,33,44,55,66,77]
+    let merge_arr = [...arr,...arr1]
+    console.log(merge_arr)
+    let [a,b,...c] = arr
+    document.write('<br>a is '+a)
+    document.write('<br>b is '+b)
+    document.write('<br>c is '+c)
+
+    let emp = {
+        name: "banana",
+        age: "22",
+        salary: "20000",
+        lastname: "Banana1",
+        establish: "vvvvvv"
+
+    }
+    let {name,age} =emp
+    document.write('<br>name is '+name)
+    document.write('<br>age is '+age)
+</script>
+
+</body>
+</html>

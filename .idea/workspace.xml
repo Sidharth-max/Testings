@@ -5,13 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e96f9f1b-ed36-4ffd-b96d-178d15a6c04d" name="Changes" comment="commit new!!">
-      <change afterPath="$PROJECT_DIR$/JS-RES/SWitch3.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JS-RES/armstrong.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JS-RES/loop.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JS-RES/loops.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JS-RES/maglo.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JS-RES/nestedif.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JS-RES/sum of digiths.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sprade.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -33,9 +28,6 @@
       <entry key="agent-panel" value="Claude Haiku 4.5" />
     </selectedModels>
   </component>
-  <component name="EmbeddingIndexingInfo">
-    <option name="cachedIndexableFilesCount" value="58" />
-  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
@@ -54,12 +46,12 @@
     &quot;assignee&quot;: &quot;Sidharth-max&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/Sidharth-max/Testings.git&quot;,
-    &quot;accountId&quot;: &quot;1c33c1d1-6933-4dfb-a4f8-cf21da78bc92&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/Sidharth-max/Testings.git",
+    "accountId": "5028cc53-b96b-4bed-9490-5f11fb0319ef"
   }
-}</component>
+}]]></component>
   <component name="McpProjectServerCommands">
     <commands />
     <urls />
@@ -82,6 +74,7 @@
     "JavaScript Debug.index.html.executor": "Run",
     "JavaScript Debug.loops.html.executor": "Run",
     "JavaScript Debug.maglo.html.executor": "Run",
+    "JavaScript Debug.sprade.html.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "Node.js.loop.js.executor": "Run",
     "Node.js.script.js.executor": "Run",
@@ -89,6 +82,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
     "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
     "git-widget-placeholder": "main",
     "javascript.preferred.runtime.type.id": "node",
@@ -112,7 +106,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-9b0f141eb926-JavaScript-WS-253.32098.39" />
+        <option value="bundled-js-predefined-d6986cc7102b-3bd3a6803838-JavaScript-WS-261.22158.274" />
       </set>
     </attachedChunks>
   </component>
@@ -142,6 +136,7 @@
       <workItem from="1774414065861" duration="2240000" />
       <workItem from="1774500665613" duration="314000" />
       <workItem from="1774500988566" duration="1875000" />
+      <workItem from="1776741253361" duration="2354000" />
     </task>
     <task id="LOCAL-00001" summary="commit new!!">
       <option name="closed" value="true" />
